@@ -19,9 +19,15 @@ while(1):
     print("Your guess: " + n)
 
     # compare input against answer and print the result
+    nMatch = len((set(str(num))).intersection(set(n)))
+
     if (int(n) == num):
         print("Correct answer!")
         break
+    elif (nMatch == len(str(num))):
+        print("Incorrect, all digits matched, but is in the wrong order")
     else:
-        print("Wrong answer!")
+        # if answer is incorrect, print the number of digits that matched the answer.
+        print("Incorrect, only " + str(nMatch) + " digits matched.")
+
 print("Game Finished.")
