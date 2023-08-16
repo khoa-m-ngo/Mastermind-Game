@@ -1,31 +1,42 @@
 import random
 
 # generate a random number from 1000-9999
-num = random.randrange(1000, 10000)
-print("The answer is: " + str(num))
+answer = random.randrange(100, 1000)
+print("The answer is: " + str(answer))
+
+print("")
+print("Hello! In this game, you will guess a 3 digit passcode.")
+print("For each incorrect try, you will be provided with a hint.")
+print("Try to guess the passcode using the minimum number of tries.")
+print("")
+
+nTries = 0
+
+start = "n"
+while(start != "y"):
+    start = input("Are you ready to start? (y / n): ")
 
 while(1):
-    n = input("Guess the 4 digit number: ")
-
-    # if the input is not a number, end the game
-    if not n.isdigit():
-        break  
-
-    # checking that the input is within range: 1000-9999
-    if int(n) not in range(1000, 10000):
-        print("Your guess is out of range")
-        continue
+    print("")
+    n = input("Guess the 3 digit number: ")
+    nTries += 1
+    # if the input is not a four digits number, it is invalid
+    if not n.isdigit() or len(n) != len(str(answer)):
+        print("Your guess must be a 3 digit number. Try again...")
+        continue  
     
     print("Your guess: " + n)
 
     # compare input against answer and print the result
-    nMatch = len((set(str(num))).intersection(set(n)))
+    nMatch = len((set(str(answer))).intersection(set(n)))
 
-    if (int(n) == num):
-        print("Correct answer!")
+    if (int(n) == answer):
+        print("Correct answer! Total number of tries: " + str(nTries))
         break
-    elif (nMatch == len(str(num))):
-        print("Incorrect, all digits matched, but is in the wrong order")
+    elif (nMatch == len(str(answer))):
+        print("All digits matched, but is in the wrong order")
+    elif (nMatch == 0):
+        print("Incorrect, none of the digits matched.")
     else:
         # if answer is incorrect, print the number of digits that matched the answer.
         print("Incorrect, only " + str(nMatch) + " digits matched.")
