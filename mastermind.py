@@ -14,7 +14,7 @@ nTries = 0
 
 start = "n"
 while(start != "y"):
-    start = input("Are you ready to start? (y / n): ")
+    start = input("Ready? (y / n): ")
 
 while(1):
     print("")
@@ -22,23 +22,27 @@ while(1):
     nTries += 1
     # if the input is not a four digits number, it is invalid
     if not n.isdigit() or len(n) != len(str(answer)):
-        print("Your guess must be a 3 digit number. Try again...")
+        print("Must be a 3 digit number. Try again...")
         continue  
     
     print("Your guess: " + n)
 
     # compare input against answer and print the result
-    nMatch = len((set(str(answer))).intersection(set(n)))
+    nMatch = 0
+    for i in range(0, len(n)):
+        print(str(n)[i])
+        if (str(n)[i] == str(answer)[i]):
+            nMatch += 1
+
+    # nMatch = len((set(str(answer))).intersection(set(n)))
 
     if (int(n) == answer):
         print("Correct answer! Total number of tries: " + str(nTries))
         break
-    elif (nMatch == len(str(answer))):
-        print("All digits matched, but is in the wrong order")
     elif (nMatch == 0):
-        print("Incorrect, none of the digits matched.")
+        print("None of the digits matched.")
     else:
         # if answer is incorrect, print the number of digits that matched the answer.
-        print("Incorrect, only " + str(nMatch) + " digits matched.")
+        print("Only " + str(nMatch) + " digits matched.")
 
 print("Game Finished.")
