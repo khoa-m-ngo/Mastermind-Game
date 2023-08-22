@@ -1,18 +1,19 @@
 import random
 
-# generate a random number from 1000-9999
+# generate a random number from 100-999
 answer = random.randrange(100, 1000)
-# print("The answer is: " + str(answer))
+
+# print("The answer is: " + str(answer)) #Debug code
 
 print("Hello! In this game, you will guess a 3 digit passcode.")
 print("For each incorrect try, you will be provided with a hint.")
-print("Try to guess the passcode using the minimum number of tries.\n")
+print("Guess the passcode using the minimum number of tries.\n")
 
 nTries = 0
 
 start = "n"
 while(start != "y"):
-    start = input("Ready? (y / n): ")
+    start = input("Ready? (y/n): ")
 
 while(1):
     n = input("\nGuess the 3 digit number: ")
