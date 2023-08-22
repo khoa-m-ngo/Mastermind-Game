@@ -2,13 +2,11 @@ import random
 
 # generate a random number from 1000-9999
 answer = random.randrange(100, 1000)
-print("The answer is: " + str(answer))
+# print("The answer is: " + str(answer))
 
-print("")
 print("Hello! In this game, you will guess a 3 digit passcode.")
 print("For each incorrect try, you will be provided with a hint.")
-print("Try to guess the passcode using the minimum number of tries.")
-print("")
+print("Try to guess the passcode using the minimum number of tries.\n")
 
 nTries = 0
 
@@ -17,8 +15,7 @@ while(start != "y"):
     start = input("Ready? (y / n): ")
 
 while(1):
-    print("")
-    n = input("Guess the 3 digit number: ")
+    n = input("\nGuess the 3 digit number: ")
     nTries += 1
     # if the input is not a four digits number, it is invalid
     if not n.isdigit() or len(n) != len(str(answer)):
@@ -30,14 +27,13 @@ while(1):
     # compare input against answer and print the result
     nMatch = 0
     for i in range(0, len(n)):
-        print(str(n)[i])
         if (str(n)[i] == str(answer)[i]):
             nMatch += 1
 
     # nMatch = len((set(str(answer))).intersection(set(n)))
 
     if (int(n) == answer):
-        print("Correct answer! Total number of tries: " + str(nTries))
+        print("Correct! Total number of tries: " + str(nTries))
         break
     elif (nMatch == 0):
         print("None of the digits matched.")
